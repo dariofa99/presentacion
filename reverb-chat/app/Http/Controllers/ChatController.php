@@ -12,7 +12,7 @@ class ChatController extends Controller
 {
     public function fetchMessages()
     {
-        //Message::truncate();
+        Message::truncate();
         return Message::with('user')->latest()->take(50)->get()->reverse()->values();
     }
 
