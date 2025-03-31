@@ -23,18 +23,15 @@ implements ShouldBroadcast
     {
         $this->message = $message;
     }
-
     public function broadcastOn()
     {
         Log::info('Message sent 1');
         return new PrivateChannel('chat-channel');
     }
-
     public function broadcastAs()
     {
         return 'Chat';
     }
-
     public function broadcastWith()
     {
         return ['message' => $this->message];

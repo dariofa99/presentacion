@@ -81,16 +81,10 @@
         const chatBox = document.getElementById('chat-box');
         window.Echo.private('chat-channel')
             .listen('.Chat', (data) => {
-
-
                 var id = document.querySelector(
                     `#data_${data.message.id}`) // document.getElementById('data_'+data.message.id);
-
-                console.log(userId, "siisis", data.message.user.id);
-
                 if (userId != data.message.user.id) {
                     const chatBox = document.getElementById('chat-box');
-
                     const dataM = {
                         id: 00,
                         user_name: data.message.user.name,
@@ -103,7 +97,6 @@
                     chatBox.appendChild(messageElement);
                     chatBox.scrollTop = chatBox.scrollHeight;
                 }
-
             });
 
 

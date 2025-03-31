@@ -19,13 +19,13 @@ class ChatController extends Controller
     public function sendMessage(Request $request)
     {
         $request->validate(['message' => 'required|string']);
-
         $message = Message::create([
             'user_id' => Auth::id(),
             'message' => $request->message,
         ]);
 
-        broadcast(new MessageSent($message->load('user')))->toOthers();
+        broadcast(new MessageSent($message->load('user')))
+        ->toOthers();
         Log::info('Message sent 2', ['message' => $message]);
         return response()->json(['success' => true, 'message' => $message]);
     }
